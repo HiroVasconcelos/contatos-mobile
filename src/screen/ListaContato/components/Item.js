@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 export default function Item({item: { nome }}) { 
-    return <View style={style.item}>
-        <TouchableOpacity><Text style={style.itemNome}>{nome}</Text></TouchableOpacity>
-    </View>
+    return (
+        <View style={style.item}>
+            <TouchableOpacity><Text style={style.itemNome}>{nome}</Text></TouchableOpacity>
+        </View>
+    )
 }
 
 const style = StyleSheet.create(

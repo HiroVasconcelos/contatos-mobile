@@ -18,8 +18,11 @@ export default function ListaContato({ navigation, route }) {
                 return (
                     <>
                         <View>
-                            <Text style={style.listaDeContatos}>Lista de Contatos</Text>
-                            <TouchableOpacity style={style.botao}><Text style={style.textoBotao}>Adicionar Contato +</Text></TouchableOpacity>
+                            <TouchableOpacity 
+                                style={style.botao} 
+                                onPress={() => navigation.navigate('Editar Contato')}>
+                                    <Text style={style.textoBotao}>Adicionar Contato +</Text>
+                            </TouchableOpacity>
                         </View> 
                     </>
                 )
@@ -30,14 +33,6 @@ export default function ListaContato({ navigation, route }) {
 
 const style = StyleSheet.create(
     {
-        listaDeContatos: {
-            color: "red",
-            fontSize: 26,
-            lineHeight: 42,
-            fontWeight: "bold",
-            marginTop: 35,
-            textAlign: "center"
-        },
         botao: {
             backgroundColor: "#2A9F85",
             paddingVertical: 10,
@@ -48,7 +43,6 @@ const style = StyleSheet.create(
         textoBotao: {
             fontWeight: "bold",
             textAlign: "center",
-            color: "red",
             fontSize: 16,
             lineHeight: 26,
         },
