@@ -1,20 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import mock from './src/mock/contatos'
+import ListaContato from './src/screen/ListaContato';
+import EditarContato from './src/screen/EditarContato';
+
+// export default function App() {
+//   return (
+//     <SafeAreaView style={style.corpo}>
+//       <StatusBar />
+//       <ListaContato {...mock}/>
+//     </SafeAreaView>
+//   );
+// }
+
+//////////////
+
+const Stack = createStackNavigator();
+
+function MyStack() {
+  return (  
+    <Stack.Navigator>
+      <Stack.Screen name="Lista Contato" component={ ListaContato } initialParams={{...mock}} />
+      <Stack.Screen name="Editar Contato" component={ EditarContato } />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <SafeAreaView>
+      <StatusBar />
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+}
